@@ -21,7 +21,6 @@
 
 
 <TextView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:text="What are you grateful for?"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:textSize="24sp"
@@ -30,37 +29,33 @@
     android:layout_alignParentLeft="true"
     android:layout_alignParentStart="true"
     android:layout_marginTop="121dp"
-    android:id="@+id/textView2" />
+    android:id="@+id/instructions_text" />
 
     <EditText
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
         android:inputType="textMultiLine"
         android:ems="10"
-        android:id="@+id/editText"
+        android:id="@+id/input_edit"
         android:layout_marginTop="82dp"
-        android:layout_alignTop="@+id/textView2" />
+        android:layout_alignTop="@+id/instructions_text" />
 
-    <EditText
-        android:layout_width="fill_parent"
+    <Button
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textMultiLine"
-        android:ems="10"
-        android:id="@+id/editText2"
-        android:layout_marginTop="21dp"
-        android:layout_below="@+id/editText"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:text="Save"
+        android:id="@+id/save_button"
+        android:layout_below="@+id/input_edit"
+        android:layout_centerHorizontal="true" />
 
-    <EditText
-        android:layout_width="fill_parent"
+    <Button
+        style="?android:attr/buttonStyleSmall"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="textMultiLine"
-        android:ems="10"
-        android:id="@+id/editText3"
-        android:layout_marginTop="26dp"
-        android:layout_below="@+id/editText2"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:text="Load"
+        android:id="@+id/load_button"
+        android:layout_below="@+id/input_edit"
+        android:layout_toRightOf="@+id/save_button"
+        android:layout_alignBottom="@+id/save_button" />
 
 </RelativeLayout>

@@ -14,7 +14,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity{
     // When requested, this adapter returns a DemoObjectFragment,
     // representing an object in the collection.
     ViewPager mViewPager;
@@ -83,12 +83,12 @@ public class MainActivity extends AppCompatActivity {
         @Override
         public Fragment getItem(int i) {
             switch(i) {
-                case 0: return new GratitudeFragment();
-                case 1: return new JournalFragment();
-                case 2: return new ExerciseFragment();
+                case 0: return InputFragment.newInstance("What are you grateful for today?");
+                case 1: return InputFragment.newInstance("Write the journal for today");
+                case 2: return InputFragment.newInstance("Enter your exercise");
                 case 3: return new MeditationFragment();
-                case 4: return new KindnessFragment();
-                default: return new DemoObjectFragment();
+                case 4: return InputFragment.newInstance("Enter acts of kindness");
+                default: return InputFragment.newInstance("Error");
             }
         }
 
