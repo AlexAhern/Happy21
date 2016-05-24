@@ -34,6 +34,9 @@ import java.util.Calendar;
 public class InputFragment extends Fragment {
     TextView mInputText;
     TextView mInstructionsText;
+    TextView mLoadText;
+    TextView mDateLoadedText;
+
     Button saveButton;
     Button loadButton;
     String dateSelected;
@@ -74,6 +77,8 @@ public static InputFragment newInstance(String name, String type){
         mInstructionsText = (TextView) view.findViewById(R.id.instructions_text) ;
         saveButton = (Button) view.findViewById(R.id.save_button);
         loadButton = (Button) view.findViewById(R.id.load_button);
+        mLoadText = (TextView) view.findViewById(R.id.load_text) ;
+        mDateLoadedText = (TextView) view.findViewById(R.id.date_loaded);
 
         mInstructionsText.setText(message);
 
@@ -115,13 +120,13 @@ public static InputFragment newInstance(String name, String type){
             FileInputStream fis = getContext().openFileInput(FILENAME);
             BufferedInputStream bis = new BufferedInputStream(fis);
             BufferedReader reader = new BufferedReader(new InputStreamReader(bis));
-            String today = "";
+            String entryForDay = "";
             String line = "";
             while ((line = reader.readLine()) != null){
-                today += line;
+                entryForDay += line;
             }
-
-            mInputText.setText(today);
+            mDateLoadedText.setText(date);
+            mLoadText.setText(entryForDay);
         } catch (FileNotFoundException e) {
             Toast.makeText(getContext(), "File not found", Toast.LENGTH_LONG).show();
             e.printStackTrace();

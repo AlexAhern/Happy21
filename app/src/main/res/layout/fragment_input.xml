@@ -14,48 +14,104 @@
   limitations under the License.
   -->
 
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical">
 
 
-<TextView xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:textSize="24sp"
-    android:padding="32dp"
-    android:layout_alignParentTop="true"
-    android:layout_alignParentLeft="true"
-    android:layout_alignParentStart="true"
-    android:layout_marginTop="121dp"
-    android:id="@+id/instructions_text" />
+    <TextView xmlns:android="http://schemas.android.com/apk/res/android"
+        android:id="@+id/instructions_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="16dp"
+        android:textSize="24sp" />
 
-    <EditText
+    <LinearLayout
+        android:id="@+id/inputLin"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_below="@+id/instructions_text"
+        android:orientation="vertical">
+
+        <EditText
+            android:id="@+id/input_edit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:hint="Enter text here"
+            android:inputType="textMultiLine"
+            android:paddingLeft="20dp"
+            android:paddingRight="20dp" />
+
+        <LinearLayout
+            android:id="@+id/buttons"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center">
+
+            <Button
+                android:id="@+id/save_button"
+                style="@style/Base.Widget.AppCompat.Button.Borderless"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="#2196F3"
+                android:text="Save"
+                android:textColor="#FFFFFF" />
+
+            <Button
+                android:id="@+id/load_button"
+                style="@style/Base.Widget.AppCompat.Button.Borderless"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="5dp"
+                android:background="#2196F3"
+                android:text="Load"
+                android:textColor="#FFFFFF" />
+
+        </LinearLayout>
+
+
+        <android.support.v7.widget.CardView xmlns:card_view="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/card_view"
+            android:layout_width="200dp"
+            android:layout_height="200dp"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginTop="24dp"
+            card_view:cardCornerRadius="4dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/date_loaded"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:layout_marginTop="12dp"
+                    android:text="Load an entry to begin"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/load_text"
+                    android:layout_width="fill_parent"
+                    android:layout_height="wrap_content"
+                    android:padding="16dp"
+                    android:textSize="16sp" />
+            </LinearLayout>
+        </android.support.v7.widget.CardView>
+    </LinearLayout>
+
+    <View
+        android:id="@+id/keyline"
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:inputType="textMultiLine"
-        android:ems="10"
-        android:id="@+id/input_edit"
-        android:layout_marginTop="82dp"
-        android:layout_alignTop="@+id/instructions_text" />
+        android:layout_height="2dp"
+        android:layout_below="@id/inputLin"
+        android:layout_marginTop="12dp"
+        android:background="#c0c0c0" />
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Save"
-        android:id="@+id/save_button"
-        android:layout_below="@+id/input_edit"
-        android:layout_centerHorizontal="true" />
-
-    <Button
-        style="?android:attr/buttonStyleSmall"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Load"
-        android:id="@+id/load_button"
-        android:layout_below="@+id/input_edit"
-        android:layout_toRightOf="@+id/save_button"
-        android:layout_alignBottom="@+id/save_button" />
-
-</RelativeLayout>
+</LinearLayout>

@@ -18,7 +18,7 @@ public class MeditationFragment extends Fragment implements TimerCallback {
     Button pauseButton;
     Button resetButton;
     Button startButton;
-    long lengthOfMeditation = 10000;
+    long lengthOfMeditation = 600000;
     boolean isPaused = false;
 
 
