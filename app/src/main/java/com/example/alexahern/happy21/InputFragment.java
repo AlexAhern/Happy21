@@ -161,6 +161,7 @@ public static InputFragment newInstance(String name, String type){
                         }
                         try {
                             fos.write(mInputText.getText().toString().getBytes());
+                            Toast.makeText(getContext(), "Saved!", Toast.LENGTH_SHORT).show();
                         } catch (IOException e) {
                             e.printStackTrace();
                         }
@@ -195,6 +196,7 @@ public static InputFragment newInstance(String name, String type){
             }
             try {
                 fos.write(mInputText.getText().toString().getBytes());
+                Toast.makeText(getContext(), "Saved!", Toast.LENGTH_SHORT).show();
             } catch (IOException e) {
                 e.printStackTrace();
             }

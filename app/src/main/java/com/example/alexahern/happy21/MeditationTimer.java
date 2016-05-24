@@ -27,7 +27,7 @@ public class MeditationTimer extends CountDownTimer {
         Log.i("test","ms="+millisUntilFinished+" till finished="+secondsLeft );
         callback.displayTime(String.format("%02d:%02d",
                 TimeUnit.SECONDS.toMinutes(secondsLeft),
-            secondsLeft));
+            secondsLeft % 60));
         this.timeRemaining = millisUntilFinished;
     }
 
