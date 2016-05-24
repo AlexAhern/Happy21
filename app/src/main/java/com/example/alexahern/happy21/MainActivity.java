@@ -83,12 +83,12 @@ public class MainActivity extends AppCompatActivity{
         @Override
         public Fragment getItem(int i) {
             switch(i) {
-                case 0: return InputFragment.newInstance("What are you grateful for today?");
-                case 1: return InputFragment.newInstance("Write the journal for today");
-                case 2: return InputFragment.newInstance("Enter your exercise");
+                case 0: return InputFragment.newInstance("What are you grateful for today?","gratitude");
+                case 1: return InputFragment.newInstance("Write the journal for today","journal");
+                case 2: return InputFragment.newInstance("Enter your exercise","exercise");
                 case 3: return new MeditationFragment();
-                case 4: return InputFragment.newInstance("Enter acts of kindness");
-                default: return InputFragment.newInstance("Error");
+                case 4: return InputFragment.newInstance("Enter acts of kindness","kindness");
+                default: return InputFragment.newInstance("Error","error");
             }
         }
 

@@ -37,14 +37,17 @@ public class InputFragment extends Fragment {
     Button saveButton;
     Button loadButton;
     String dateSelected;
-    static String EXTRA_MESSAGE= "message";
+    static String EXTRA_MESSAGE= "text";
+    static String EXTRA_MESSAGE_TWO = "type";
     String message;
+    String type;
 
-
-public static InputFragment newInstance(String name){
+public static InputFragment newInstance(String name, String type){
     InputFragment f = new InputFragment();
     Bundle bdl = new Bundle(1);
     bdl.putString(EXTRA_MESSAGE, name);
+    bdl.putString(EXTRA_MESSAGE_TWO, type);
+    f.setArguments(bdl);
     return f;
 }
 
@@ -52,6 +55,7 @@ public static InputFragment newInstance(String name){
     public void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         message = getArguments().getString(EXTRA_MESSAGE);
+        type = getArguments().getString(EXTRA_MESSAGE_TWO);
     }
 
     @Override
@@ -106,12 +110,17 @@ public static InputFragment newInstance(String name){
     }
 
     private void loadInput(String date){
-        String FILENAME = "gratitude-" + date;
+        String FILENAME = type+"-" + date;
         try {
             FileInputStream fis = getContext().openFileInput(FILENAME);
             BufferedInputStream bis = new BufferedInputStream(fis);
             BufferedReader reader = new BufferedReader(new InputStreamReader(bis));
-            String today = reader.readLine();
+            String today = "";
+            String line = "";
+            while ((line = reader.readLine()) != null){
+                today += line;
+            }
+
             mInputText.setText(today);
         } catch (FileNotFoundException e) {
             Toast.makeText(getContext(), "File not found", Toast.LENGTH_LONG).show();
@@ -125,7 +134,7 @@ public static InputFragment newInstance(String name){
         Boolean fileFound=false;
         Calendar calendar = Calendar.getInstance();
         String test = "" + calendar.get(Calendar.DAY_OF_MONTH) + "-" + (calendar.get(Calendar.MONTH) + 1);
-        final String FILENAME = "gratitude-" + test;
+        final String FILENAME = type+"-" + test;
         for (String s : getContext().fileList()) {
             if (s.equals(FILENAME)) {
                 fileFound=true;
